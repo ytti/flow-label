@@ -82,7 +82,7 @@ Table of Contents
    field will affect behaviour.  Source host has two separate problems
    it may want to communicate.  First problem is that source host may
    want to communicate that two packets with non-identical L3, L4 and LI
-   keys belong to a same flow.  Second problem is that source host imay
+   keys belong to a same flow.  Second problem is that source host may
    want to communicate that two packets with identical L3, L4 and LI
    keys belong to a different flow.  Currenty neither is possible.  Host
    might not use flow label at all for flow speculation, it might use
@@ -98,9 +98,9 @@ Table of Contents
    Flow speculation:  Process where host associates packet as a member
       of a flow
 
-   L3 Keys:  Any fields in L3 headers used as keys in Flow Speculatoin
+   L3 Keys:  Any fields in L3 headers used as keys in Flow Speculation
 
-   L4 Keys:  Any fields in L4 headers used as keys in Flow Speculatoin
+   L4 Keys:  Any fields in L4 headers used as keys in Flow Speculation
 
    LI Keys:  Any other than L3 and L4 headers in IP packet used as keys
       in Flow Speculation.  Host may look beyond L4 for example in

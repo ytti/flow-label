@@ -469,7 +469,7 @@
   <h1 id="rfc.section.1">
 <a href="#rfc.section.1">1.</a> <a href="#problem" id="problem">Problem Statement</a>
 </h1>
-<p id="rfc.section.1.p.1">Currently in <a href="#RFC6437" class="xref">[RFC6437]</a> IPv6 Flow Label behaviour is defined in such manner that source host cannot predict how setting the Flow Label field will affect behaviour.  Source host has two separate problems it may want to communicate.  First problem is that source host may want to communicate that two packets with non-identical L3, L4 and LI keys belong to a same flow.  Second problem is that source host imay want to communicate that two packets with identical L3, L4 and LI keys belong to a different flow.  Currenty neither is possible.  Host might not use flow label at all for flow speculation, it might use flow label exclusively or it might use some combination.  One currently perfectly valid implementation would be to use L3 keys + Flow Label when next-header is not UDP or TCP otherwise use L3 keys + L4 keys.  </p>
+<p id="rfc.section.1.p.1">Currently in <a href="#RFC6437" class="xref">[RFC6437]</a> IPv6 Flow Label behaviour is defined in such manner that source host cannot predict how setting the Flow Label field will affect behaviour.  Source host has two separate problems it may want to communicate.  First problem is that source host may want to communicate that two packets with non-identical L3, L4 and LI keys belong to a same flow.  Second problem is that source host may want to communicate that two packets with identical L3, L4 and LI keys belong to a different flow.  Currenty neither is possible.  Host might not use flow label at all for flow speculation, it might use flow label exclusively or it might use some combination.  One currently perfectly valid implementation would be to use L3 keys + Flow Label when next-header is not UDP or TCP otherwise use L3 keys + L4 keys.  </p>
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> <a href="#terminology" id="terminology">Terminology</a>
 </h1>
@@ -481,11 +481,11 @@
 <dt></dt>
 <dd style="margin-left: 8"></dd>
 <dt>L3 Keys:</dt>
-<dd style="margin-left: 8">Any fields in L3 headers used as keys in Flow Speculatoin </dd>
+<dd style="margin-left: 8">Any fields in L3 headers used as keys in Flow Speculation </dd>
 <dt></dt>
 <dd style="margin-left: 8"></dd>
 <dt>L4 Keys:</dt>
-<dd style="margin-left: 8">Any fields in L4 headers used as keys in Flow Speculatoin </dd>
+<dd style="margin-left: 8">Any fields in L4 headers used as keys in Flow Speculation </dd>
 <dt></dt>
 <dd style="margin-left: 8"></dd>
 <dt>LI Keys:</dt>
