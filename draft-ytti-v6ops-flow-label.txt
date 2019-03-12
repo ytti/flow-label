@@ -1,0 +1,168 @@
+
+
+
+
+v6ops                                                            S. Ytti
+Internet-Draft                                                       NTT
+Updates: RFC8200 (if approved)                            March 12, 2019
+Intended status: Standards Track
+Expires: September 13, 2019
+
+
+                            IPv6 Flow Label
+                     draft-ytti-v6ops-flow-label-00
+
+Abstract
+
+   This document specified behaviour of IPv6 Flow Label field.
+
+Requirements Language
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in BCP
+   14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on September 13, 2019.
+
+Copyright Notice
+
+   Copyright (c) 2019 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (https://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+
+
+
+Ytti                   Expires September 13, 2019               [Page 1]
+
+Internet-Draft                 Flow Label                     March 2019
+
+
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+Table of Contents
+
+   1.  Problem Statement . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   2
+   3.  Exclusive Key Flag  . . . . . . . . . . . . . . . . . . . . .   3
+   4.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     4.1.  Normative References  . . . . . . . . . . . . . . . . . .   3
+     4.2.  Informative References  . . . . . . . . . . . . . . . . .   3
+   Appendix A.  Acknowledgments  . . . . . . . . . . . . . . . . . .   3
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   3
+
+1.  Problem Statement
+
+   Currently in [RFC6437] IPv6 Flow Label behaviour is defined in such
+   manner that source host cannot predict how setting the Flow Label
+   field will affect behaviour.  Source host has two separate problems
+   it may want to communicate.  First problem is that source host may
+   want to communicate that two packets with non-identical L3, L4 and LI
+   keys belong to a same flow.  Second problem is that source host imay
+   want to communicate that two packets with identical L3, L4 and LI
+   keys belong to a different flow.  Currenty neither is possible.  Host
+   might not use flow label at all for flow speculation, it might use
+   flow label exclusively or it might use some combination.  One
+   currently perfectly valid implementation would be to use L3 keys +
+   Flow Label when next-header is not UDP or TCP otherwise use L3 keys +
+   L4 keys.
+
+2.  Terminology
+
+   This document uses the following terms:
+
+   Flow speculation:  Process where host associates packet as a member
+      of a flow
+
+   L3 Keys:  Any fields in L3 headers used as keys in Flow Speculatoin
+
+   L4 Keys:  Any fields in L4 headers used as keys in Flow Speculatoin
+
+   LI Keys:  Any other than L3 and L4 headers in IP packet used as keys
+      in Flow Speculation.  Host may look beyond L4 for example in
+      tunneling, GTP TEID particularly is commonly supported.
+
+
+
+
+Ytti                   Expires September 13, 2019               [Page 2]
+
+Internet-Draft                 Flow Label                     March 2019
+
+
+3.  Exclusive Key Flag
+
+   The most significant bit in IPv6 Flow Label is called EKF or
+   'Exclusive Key Flag'.  When EKF is set host MUST not use any other
+   L3, L4 or LI key for Flow Speculation.  When EKF is unset host MAY
+   use other L3, L4 and LI keys for Flow Speculation.
+
+   Other keys than L3, L4 and LI keys may still be used for Flow
+   Speculation when EKF is set.  Example of other key would be for
+   example an ingress interface.
+
+4.  References
+
+4.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+   [RFC8200]  Deering, S. and R. Hinden, "Internet Protocol, Version 6
+              (IPv6) Specification", STD 86, RFC 8200,
+              DOI 10.17487/RFC8200, July 2017,
+              <https://www.rfc-editor.org/info/rfc8200>.
+
+4.2.  Informative References
+
+   [RFC6437]  Amante, S., Carpenter, B., Jiang, S., and J. Rajahalme,
+              "IPv6 Flow Label Specification", RFC 6437,
+              DOI 10.17487/RFC6437, November 2011,
+              <https://www.rfc-editor.org/info/rfc6437>.
+
+Appendix A.  Acknowledgments
+
+Author's Address
+
+   Saku Ytti
+   NTT Communications
+
+   Email: ytti@ntt.net
+
+
+
+
+
+
+
+Ytti                   Expires September 13, 2019               [Page 3]
