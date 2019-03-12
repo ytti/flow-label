@@ -1,9 +1,9 @@
 [![Build Status](https://api.travis-ci.com/ytti/flow-label.svg)](https://travis-ci.com/ytti/flow-label)
 
 # Flow Label
-IPv6 Flow Label is 20 bit field in IPv6 header with no particular behaviour
-sender can expect. This draft documentse behaviour which would allow IPv6
-sender to have control over flow speculation.
+IPv6 Flow Label is a 20 bit field in the IPv6 header with no particular
+behaviour sender can expect. This draft documents behaviour which would allow
+IPv6 sender to have control over flow speculation.
 
 # Authoring Conventions
 
